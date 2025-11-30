@@ -1,27 +1,26 @@
 # Applying Entropy Methods to Eruption Forecasting
 
-Entropy features summarise waveform complexity and can signal dynamical shifts. A basic workflow:
+Entropy features summarise waveform complexity and can signal dynamical shifts. The toolkit provides a lightweight pipeline aligned with the following conceptual workflow.
 
-1. **Stream & preprocess**: detrend, bandpass, resample, and standardise continuous traces.
-2. **Window & compute**: run PE/WPE/MPE on overlapping windows (e.g., 10–60 s).
-3. **Aggregate features**: combine recent windows (last few minutes) as inputs.
-4. **Forecast**: train a probabilistic classifier to estimate eruption likelihood over a horizon (e.g., 10–60 minutes ahead).
+1. **Stream & preprocess**: detrend, band-pass, resample, and optionally z-score continuous traces; drop gross gaps.
+2. **Window & compute**: run PE/WPE/MPE on overlapping windows (e.g., 10–60 s) with embedding $(m, \tau)$ chosen per station.
+3. **Aggregate features**: combine entropy and basic amplitude statistics across recent windows to describe short-term evolution.
+4. **Forecast**: train a probabilistic classifier to estimate eruption likelihood over a horizon (e.g., 10–60 minutes ahead); calibrate probabilities.
 
 ## Physical interpretations
 - Rising entropy with rising energy may indicate fracturing or turbulent degassing.
 - Falling entropy with rising energy often corresponds to emergent, quasi-harmonic tremor.
-- Divergence across scales (MPE) highlights simultaneous tremor and transient bursts.
+- Divergence across scales (MPE) highlights simultaneous tremor (ordered at low frequencies) and transient bursts (irregular at high frequencies).
 
 ## Alerting and calibration
-- Map calibrated probabilities to alert levels (green/yellow/red) with adjustable thresholds.
-- Use Platt scaling or isotonic regression to align probabilities with observed frequencies.
+- Map calibrated probabilities to alert levels (green/yellow/red) with adjustable thresholds reflecting local risk tolerance.
+- Use Platt scaling (implemented) or isotonic regression to align probabilities with observed frequencies and avoid overconfident alarms.
 
 ## Validation
-- Employ time-based splits (train on early data, validate on later) to respect causality.
-- Report ROC/PR curves, reliability diagrams, and lead-time metrics (how early alerts arrive before eruptions).
-- Track false-alarm rate per day/week to reflect operational costs.
+- Prefer time-based splits (train early, validate late) to respect causality; random splits are acceptable only for quick checks.
+- Report ROC/PR curves, reliability diagrams, alert lead time (how early an alert fires before eruption), and false-alarm rate per day/week.
+- Track station-specific performance; strong site effects often require per-station tuning of $(m, \tau)$ and MPE scales.
 
 ## Limitations and caveats
-- Eruptions are rare; labels are uncertain. Bootstrapping and transfer learning can help.
-- Site effects are strong; per-station tuning of :math:`m`, :math:`\\tau`, and scale ranges is expected.
-- Entropy should complement, not replace, amplitude- or rate-based indicators and multi-parameter monitoring.
+- Eruptions are rare and labels uncertain. Bootstrapping, transfer learning between stations, and ensembling with rate/energy features can help.
+- Entropy should complement, not replace, amplitude- or rate-based indicators and multi-parameter monitoring (deformation, gas, thermal).

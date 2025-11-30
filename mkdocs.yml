@@ -1,0 +1,72 @@
+site_name: Permutation Entropy for Volcano Forecasting
+site_description: Theory, usage, and API documentation for permutation-entropy-based eruption forecasting.
+repo_url: https://github.com/AlmondSund/permutation-entropy
+docs_dir: docs
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.instant
+    - navigation.top
+    - content.code.copy
+    - toc.integrate
+  palette:
+    scheme: default
+    primary: deep orange
+    accent: cyan
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - tables
+  - attr_list
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+      inline_syntax:
+        - dollar
+        - round
+      block_syntax:
+        - dollar
+        - square
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search
+  - with-pdf:
+      author: permutation-entropy developers
+      cover_title: Permutation Entropy for Volcano Forecasting
+      cover_subtitle: Theory, usage, and API
+      output_path: site/pdf/permutation-entropy-docs.pdf
+
+nav:
+  - Home: index.md
+  - Theory:
+      - "1. Seismic context": theory/01-intro-seismicity.md
+      - "2. Permutation entropy": theory/02-permutation-entropy.md
+      - "3. MPE & WPE": theory/03-mpe-wpe-variants.md
+      - "4. Time-series complexity": theory/04-time-series-and-complexity.md
+      - "5. Forecasting application": theory/05-application-to-eruption-forecasting.md
+  - Usage:
+      - "Installation": usage/01-installation.md
+      - "Basic examples": usage/02-basic-examples.md
+      - "CLI & pipelines": usage/03-cli-and-pipelines.md
+  - API:
+      - "Entropy": api/entropy.md
+      - "Features": api/features.md
+      - "Models & pipelines": api/models.md
+  - Paper scaffold: paper/README.md

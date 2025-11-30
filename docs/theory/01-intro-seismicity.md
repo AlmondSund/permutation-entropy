@@ -1,17 +1,17 @@
 # Introduction to Seismicity and Forecasting
 
-Volcanic systems radiate continuous seismic energy as magma migrates, cracks open, and fluids interact. Prior to eruptions, seismic signals often transition from low-energy background noise to tremor-like, quasi-harmonic, or bursty patterns. Forecasting aims to detect these transitions early enough to trigger mitigations while avoiding excessive false alarms.
+Volcanic systems radiate continuous seismic energy as magma migrates, cracks open, and fluids interact with gas or groundwater. As eruptions approach, seismic waveforms often drift from low-energy background noise to tremor-like, quasi-harmonic, or bursty patterns. The goal of forecasting is to detect these transitions early enough to trigger mitigations while keeping false alarms manageable.
 
 ## Eruption precursors in seismic data
-- **Increased event rates**: more volcano-tectonic earthquakes or long-period events.
-- **Emergent tremor**: sustained, narrowband signals linked to fluid resonance.
+- **Event-rate changes**: volcano-tectonic or long-period earthquakes may cluster or accelerate.
+- **Emergent tremor**: sustained, narrowband signals linked to fluid resonance or conduit oscillations.
 - **Amplitude growth**: RMS energy rises as gas flux or magma ascent accelerates.
-- **Complexity changes**: signals can become more regular (tremor) or more irregular (fracturing) depending on the mechanism.
+- **Complexity swings**: signals can become more regular (harmonic tremor) or more irregular (fracturing or turbulent degassing) depending on the underlying physics.
 
 ## Forecasting challenges
-- **Non-stationarity**: background noise, weather, and anthropogenic sources vary.
-- **Sensor diversity**: different stations, instruments, and site effects.
-- **Data volume**: continuous recordings require automated, scalable methods.
-- **Uncertainty**: eruptions are rare; labeling is difficult and often retrospective.
+- **Non-stationarity** from weather, seasonality, or cultural noise complicates baselines.
+- **Sensor diversity** (station geometry, instrument response, site effects) changes waveform character.
+- **Data volume** demands automated summarisation of long continuous streams.
+- **Label uncertainty** arises because eruptions are rare, and onset times may be defined retroactively.
 
-Permutation entropy (and variants) provides a compact way to track signal complexity that is robust to amplitude scaling and monotonic transformations, making it attractive for continuous monitoring.
+Ordinal-pattern-based entropies offer a compact, interpretable descriptor of dynamical state that is invariant under monotonic transformations and tolerant of mild noise. They suit continuous monitoring where a handful of tuned parameters can track complexity shifts that accompany eruptive transitions.

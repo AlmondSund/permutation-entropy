@@ -31,6 +31,12 @@ dev = [
     "pytest>=8.0",
     "ruff>=0.3",
 ]
+docs = [
+    "mkdocs>=1.5",
+    "mkdocs-material>=9.5",
+    "mkdocs-with-pdf>=0.9",
+    "pymdown-extensions>=10.7",
+]
 
 [tool.black]
 line-length = 100
