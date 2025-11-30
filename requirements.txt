@@ -1,0 +1,14 @@
+# Core dependencies
+antropy>=0.1.6
+matplotlib>=3.8
+numpy>=1.26
+obspy>=1.4
+pandas>=2.1
+scipy>=1.11
+
+# Developer tools
+black>=24.0
+jupyterlab>=4.0
+mypy>=1.8
+pytest>=8.0
+ruff>=0.3

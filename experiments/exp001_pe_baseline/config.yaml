@@ -1,0 +1,7 @@
+# Baseline permutation entropy experiment configuration
+experiment: exp001_pe_baseline
+entropy_variant: pe
+sampling_rate_hz: 100
+order: 3
+delay: 1
+train_split: 0.8

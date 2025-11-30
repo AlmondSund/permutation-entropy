@@ -1,0 +1,5 @@
+# Station-specific overrides for station_X
+station: station_X
+sampling_rate_hz: 50
+paths:
+  data_root: data/station_X

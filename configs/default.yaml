@@ -1,0 +1,12 @@
+# Default configuration for pipelines
+seed: 42
+sampling_rate_hz: 100
+entropy:
+  variant: pe
+  order: 3
+  delay: 1
+model:
+  type: logistic_regression
+  calibration: platt
+paths:
+  data_root: data

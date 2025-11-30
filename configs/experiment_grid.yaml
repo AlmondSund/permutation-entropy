@@ -1,0 +1,5 @@
+# Grid configuration for sweeping entropy parameters
+variants: [pe, mpe, wpe]
+orders: [3, 4, 5]
+delays: [1, 2, 3]
+scales: [3, 5, 7]

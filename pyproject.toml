@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "permutation-entropy"
+version = "0.1.0"
+description = "Prototype for volcanic eruption forecasting using permutation entropy."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Martín Ramírez Espinosa" }]
+keywords = ["permutation entropy", "volcanology", "seismic", "time-series"]
+dependencies = [
+    "antropy>=0.1.6",
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+    "obspy>=1.4",
+    "pandas>=2.1",
+    "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=24.0",
+    "jupyterlab>=4.0",
+    "mypy>=1.8",
+    "pytest>=8.0",
+    "ruff>=0.3",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
