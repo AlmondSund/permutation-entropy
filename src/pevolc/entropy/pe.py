@@ -17,4 +17,5 @@ def compute_pe(signal: Sequence[float], order: int = 3, delay: int = 1) -> float
     delay: int
         Time lag between embedding points.
     """
+    
     raise NotImplementedError("Permutation entropy computation not implemented yet")
