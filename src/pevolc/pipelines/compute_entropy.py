@@ -29,6 +29,27 @@ def _load_signal(path: Path, sampling_rate: float | None = None) -> tuple[np.nda
         return data.astype(float), sampling_rate
 
 
+def _bandpass(signal: np.ndarray, sr: float, low: float | None, high: float | None, order: int = 4) -> np.ndarray:
+    """Apply Butterworth bandpass if bounds are provided."""
+
+    from scipy.signal import butter, filtfilt
+
+    nyq = 0.5 * sr
+    if low is None and high is None:
+        return signal
+    if low is None:
+        btype = "lowpass"
+        Wn = high / nyq
+    elif high is None:
+        btype = "highpass"
+        Wn = low / nyq
+    else:
+        btype = "bandpass"
+        Wn = [low / nyq, high / nyq]
+    b, a = butter(order, Wn, btype=btype)
+    return filtfilt(b, a, signal)
+
+
 def _infer_label(path: Path, cfg: dict) -> float | None:
     if "label_value" in cfg:
         return float(cfg["label_value"])
@@ -47,6 +68,9 @@ def compute_entropy_dataset(
     """Compute permutation-entropy variants for provided data files and save results."""
 
     sampling_rate = float(cfg["sampling_rate_hz"])
+    band_low = cfg.get("bandpass_low")
+    band_high = cfg.get("bandpass_high")
+    label_shift = int(cfg.get("label_shift_windows", 0))
     window_cfg = WindowConfig(
         window_seconds=float(cfg.get("window_seconds", 10.0)),
         step_seconds=float(cfg.get("step_seconds", 5.0)),
@@ -59,6 +83,7 @@ def compute_entropy_dataset(
     frames = []
     for path in data_paths:
         data, sr = _load_signal(path, sampling_rate)
+        data = _bandpass(data, sr, band_low, band_high, order=int(cfg.get("bandpass_order", 4)))
         features = extract_entropy_features(data, sr, window_cfg)
         features.insert(0, "source_file", path.name)
         label = _infer_label(path, cfg)
@@ -66,6 +91,13 @@ def compute_entropy_dataset(
             features["label"] = label
         frames.append(features)
     dataset = pd.concat(frames, ignore_index=True)
+    if label_shift != 0 and "label" in dataset.columns:
+        shifted = []
+        for name, group in dataset.groupby("source_file"):
+            shifted_group = group.copy()
+            shifted_group["label"] = shifted_group["label"].shift(-label_shift).bfill().ffill()
+            shifted.append(shifted_group)
+        dataset = pd.concat(shifted, ignore_index=True)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     dataset.to_csv(output_path, index=False)
     return dataset

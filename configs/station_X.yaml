@@ -1,5 +1,13 @@
 # Station-specific overrides for station_X
 station: station_X
 sampling_rate_hz: 50
+window_seconds: 20
+step_seconds: 10
+bandpass_low: 0.2
+bandpass_high: 15
+detrend: true
+zscore: true
 paths:
   data_root: data/station_X
+  data_glob: "data/station_X/*.mseed"
+  output_path: "data/processed/station_X_entropy.csv"

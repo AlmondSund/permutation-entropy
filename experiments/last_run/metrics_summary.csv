@@ -1,0 +1,4 @@
+model,roc_auc,pr_auc
+logreg,0.970123527721919,0.9769330115538268
+random_forest,1.0,0.9999999999999998
+gradient_boosting,1.0,1.0

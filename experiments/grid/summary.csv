@@ -1,0 +1,17 @@
+run,model_path,metrics_path,roc_auc,pr_auc
+m3_tau1_s3_logreg,experiments/grid/m3_tau1_s3_logreg/forecaster.joblib,experiments/grid/m3_tau1_s3_logreg/metrics.csv,1.0,1.0
+m3_tau1_s3_random_forest,experiments/grid/m3_tau1_s3_random_forest/forecaster.joblib,experiments/grid/m3_tau1_s3_random_forest/metrics.csv,1.0,1.0
+m3_tau1_s5_logreg,experiments/grid/m3_tau1_s5_logreg/forecaster.joblib,experiments/grid/m3_tau1_s5_logreg/metrics.csv,1.0,1.0
+m3_tau1_s5_random_forest,experiments/grid/m3_tau1_s5_random_forest/forecaster.joblib,experiments/grid/m3_tau1_s5_random_forest/metrics.csv,1.0,1.0
+m3_tau2_s3_logreg,experiments/grid/m3_tau2_s3_logreg/forecaster.joblib,experiments/grid/m3_tau2_s3_logreg/metrics.csv,1.0,1.0
+m3_tau2_s3_random_forest,experiments/grid/m3_tau2_s3_random_forest/forecaster.joblib,experiments/grid/m3_tau2_s3_random_forest/metrics.csv,1.0,1.0
+m3_tau2_s5_logreg,experiments/grid/m3_tau2_s5_logreg/forecaster.joblib,experiments/grid/m3_tau2_s5_logreg/metrics.csv,1.0,1.0
+m3_tau2_s5_random_forest,experiments/grid/m3_tau2_s5_random_forest/forecaster.joblib,experiments/grid/m3_tau2_s5_random_forest/metrics.csv,1.0,1.0
+m4_tau1_s3_logreg,experiments/grid/m4_tau1_s3_logreg/forecaster.joblib,experiments/grid/m4_tau1_s3_logreg/metrics.csv,1.0,1.0
+m4_tau1_s3_random_forest,experiments/grid/m4_tau1_s3_random_forest/forecaster.joblib,experiments/grid/m4_tau1_s3_random_forest/metrics.csv,1.0,1.0
+m4_tau1_s5_logreg,experiments/grid/m4_tau1_s5_logreg/forecaster.joblib,experiments/grid/m4_tau1_s5_logreg/metrics.csv,1.0,1.0
+m4_tau1_s5_random_forest,experiments/grid/m4_tau1_s5_random_forest/forecaster.joblib,experiments/grid/m4_tau1_s5_random_forest/metrics.csv,1.0,1.0
+m4_tau2_s3_logreg,experiments/grid/m4_tau2_s3_logreg/forecaster.joblib,experiments/grid/m4_tau2_s3_logreg/metrics.csv,1.0,1.0
+m4_tau2_s3_random_forest,experiments/grid/m4_tau2_s3_random_forest/forecaster.joblib,experiments/grid/m4_tau2_s3_random_forest/metrics.csv,1.0,1.0
+m4_tau2_s5_logreg,experiments/grid/m4_tau2_s5_logreg/forecaster.joblib,experiments/grid/m4_tau2_s5_logreg/metrics.csv,1.0,1.0
+m4_tau2_s5_random_forest,experiments/grid/m4_tau2_s5_random_forest/forecaster.joblib,experiments/grid/m4_tau2_s5_random_forest/metrics.csv,1.0,1.0

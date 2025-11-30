@@ -1,5 +1,23 @@
-# Grid configuration for sweeping entropy parameters
-variants: [pe, mpe, wpe]
-orders: [3, 4, 5]
-delays: [1, 2, 3]
-scales: [3, 5, 7]
+# Grid configuration for sweeping entropy/model parameters
+base:
+  data_glob: "data/raw/*.npy"
+  sampling_rate_hz: 100
+  window_seconds: 10
+  step_seconds: 5
+  detrend: true
+  zscore: true
+  bandpass_low: 0.1
+  bandpass_high: 20
+  label_mapping:
+    eruption: 1
+    background: 0
+    default: 0
+  label_column: label
+  split:
+    type: time
+    val_fraction: 0.2
+    time_column: start_s
+orders: [3, 4]
+delays: [1, 2]
+scales: [3, 5]
+model_types: [logreg, random_forest]
