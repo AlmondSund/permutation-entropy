@@ -28,4 +28,11 @@ pip install -e .[docs]
 mkdocs serve        # live preview at http://127.0.0.1:8000
 mkdocs build        # HTML output in site/
 ```
-The PDF plugin writes `site/pdf/permutation-entropy-docs.pdf` during `mkdocs build`. Keep Markdown under `docs/theory/` as the canonical source; copy relevant passages into `docs/paper/main.tex` only when producing a paper-grade PDF.
+To render a MathJax-aware PDF, use the separate PDF config and a Chromium installation:
+```bash
+# needs mkdocs-pdf-export-plugin and a local Chromium/Chrome
+mkdocs build -f mkdocs-pdf.yml
+```
+This writes a combined PDF at `site/pdf/permutation-entropy-docs.pdf`. Set `chromium_executable` in `mkdocs-pdf.yml` if Chromium/Chrome lives elsewhere.
+
+Keep Markdown under `docs/theory/` as the canonical source; copy relevant passages into `docs/paper/main.tex` only when producing a paper-grade PDF.

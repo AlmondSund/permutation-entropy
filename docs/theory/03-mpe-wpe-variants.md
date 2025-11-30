@@ -4,9 +4,11 @@ Permutation entropy can be extended to capture structure across scales (MPE) and
 
 ## Multiscale Permutation Entropy (MPE)
 For a chosen scale $s$, coarse-grain the signal by averaging non-overlapping blocks:
+
 $$
 y^{(s)}_k = \frac{1}{s} \sum_{i=0}^{s-1} x_{ks+i}.
 $$
+
 Compute $H_{\mathrm{PE}}$ on $y^{(s)}$ for each $s$ in a scale set $\mathcal{S}$. The resulting curve $H_{\mathrm{PE}}(s)$ reveals how ordering changes when fast fluctuations are smoothed.
 
 - Rising entropy with increasing $s$ indicates additional irregularity at slower trends.
@@ -15,10 +17,12 @@ Compute $H_{\mathrm{PE}}$ on $y^{(s)}$ for each $s$ in a scale set $\mathcal{S}$
 
 ## Weighted Permutation Entropy (WPE)
 WPE modifies the empirical distribution with per-window weights $w_t$:
+
 $$
 p_w(\pi_i) = \frac{\sum_t w_t \,\mathbf{1}[\pi_t = \pi_i]}{\sum_t w_t}, \qquad
 H_{\mathrm{WPE}} = - \sum_{i=1}^{m!} p_w(\pi_i) \log_b p_w(\pi_i).
 $$
+
 Common choices are:
 
 - **Variance weighting**: $w_t = \operatorname{Var}(x_t, \ldots, x_{t+(m-1)\tau})$.

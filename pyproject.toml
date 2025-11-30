@@ -34,7 +34,7 @@ dev = [
 docs = [
     "mkdocs>=1.5",
     "mkdocs-material>=9.5",
-    "mkdocs-with-pdf>=0.9",
+    "mkdocs-pdf-export-plugin>=0.5",
     "pymdown-extensions>=10.7",
 ]
 

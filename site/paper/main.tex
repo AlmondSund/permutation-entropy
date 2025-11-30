@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\geometry{margin=1in}
+
+\title{Permutation-Entropy-Based Forecasting of Volcanic Eruptions}
+\author{permutation-entropy developers}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Permutation entropy (PE) and its multiscale (MPE) and weighted (WPE) variants provide compact descriptors of ordinal structure in seismic waveforms. We outline how these metrics capture dynamical changes preceding eruptions and how they feed lightweight probabilistic forecasters. This scaffold mirrors the Markdown theory in the repository while enabling a paper-grade PDF.
+\end{abstract}
+
+\section{Introduction}
+Volcano monitoring relies on continuous seismic data to spot precursory changes. Prior to eruptions, signals transition from background noise to tremor-like or bursty patterns. We investigate ordinal-pattern-based entropies as robust measures of time-series complexity that are insensitive to monotonic transformations and resilient to amplitude scaling.
+
+\section{Ordinal Patterns and Permutation Entropy}
+Given a discrete signal $\{x_t\}$, choose embedding dimension $m$ and delay $\tau$. Embed the series as
+\begin{equation}
+\mathbf{x}_t = (x_t, x_{t+\tau}, \ldots, x_{t+(m-1)\tau}),
+\end{equation}
+and map each $\mathbf{x}_t$ to the permutation $\pi_t$ that sorts its elements (ties broken by time order). Let $p(\pi_i)$ be the relative frequency of each permutation over all windows. The permutation entropy is
+\begin{equation}
+H_{\mathrm{PE}} = - \sum_{i=1}^{m!} p(\pi_i) \log_b p(\pi_i),
+\end{equation}
+with logarithm base $b$ and optional normalisation by $\log_b m!$.
+
+\section{Multiscale and Weighted Variants}
+For MPE, coarse-grain the signal by averaging non-overlapping blocks of length $s$ to obtain $y^{(s)}_k$. Compute $H_{\mathrm{PE}}$ for each $s$ to obtain a scale curve $H_{\mathrm{PE}}(s)$. Weighted PE modifies the empirical distribution via window weights $w_t$,
+\begin{equation}
+p_w(\pi_i) = \frac{\sum_t w_t \,\mathbf{1}[\pi_t = \pi_i]}{\sum_t w_t},
+\end{equation}
+so energetic or high-variance segments contribute more.
+
+\section{Data, Preprocessing, and Feature Extraction}
+Continuous waveforms are detrended, optionally band-passed, and standardised. Sliding windows of length $T_w$ with stride $T_s$ feed PE/WPE/MPE calculators. We retain window start and end times, entropy values, and basic amplitude statistics to contextualise complexity changes.
+
+\section{Forecasting Model}
+Entropy features are aggregated across recent windows and passed to a probabilistic classifier (logistic regression, random forest, or gradient boosting). Platt scaling refines calibration. Alert levels (green/yellow/red) are derived from configurable probability thresholds tailored to operational tolerances.
+
+\section{Validation and Lead-Time Assessment}
+Time-aware splits separate training and validation periods. We report ROC-AUC, PR-AUC, reliability curves, and alert lead times relative to known eruption onsets. False-alarm rates per day/week provide operational relevance.
+
+\section{Discussion}
+Permutation-based entropies offer a low-cost, interpretable view of dynamical state. Combining MPE and WPE highlights both cross-scale ordering and energetic transients. Future work includes multi-station fusion, adaptive parameter tuning, and integration with other geophysical streams.
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}

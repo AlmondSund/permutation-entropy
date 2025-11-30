@@ -26,13 +26,13 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.arithmatex:
-      generic: true
+      generic: true   # emit simple spans for MathJax to process
       inline_syntax:
-        - dollar
-        - round
+        - dollar       # $...$
+        - round        # \(...\)
       block_syntax:
-        - dollar
-        - square
+        - dollar       # $$...$$
+        - square       # \[...\]
   - pymdownx.superfences
   - pymdownx.details
   - pymdownx.betterem:
@@ -47,11 +47,6 @@ extra_javascript:
 
 plugins:
   - search
-  - with-pdf:
-      author: permutation-entropy developers
-      cover_title: Permutation Entropy for Volcano Forecasting
-      cover_subtitle: Theory, usage, and API
-      output_path: site/pdf/permutation-entropy-docs.pdf
 
 nav:
   - Home: index.md

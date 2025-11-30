@@ -4,23 +4,29 @@ Permutation Entropy (PE) measures the diversity of ordinal patterns in a time se
 
 ## Ordinal patterns and embedding
 For a series $x_t$, choose an embedding dimension $m$ and delay $\tau$. Form delayed vectors
+
 $$
 \mathbf{x}_t = \big(x_t, x_{t+\tau}, \ldots, x_{t+(m-1)\tau}\big).
 $$
+
 Replace each $\mathbf{x}_t$ with the permutation $\pi_t$ that sorts its elements. A stable sort breaks ties by time order, so equal values retain their temporal ordering. There are $m!$ possible patterns.
 
 ## Probability distribution over permutations
 Let $n$ be the number of windows. The empirical frequency of permutation $\pi_i$ is
+
 $$
 p(\pi_i) = \frac{1}{n} \sum_{t} \mathbf{1}[\pi_t = \pi_i],
 $$
+
 optionally replaced by a weighted count in WPE (see below). The set $\{p(\pi_i)\}$ is a probability mass function over ordinal patterns.
 
 ## Entropy definition
 The permutation entropy with logarithm base $b$ is
+
 $$
 H_{\mathrm{PE}} = - \sum_{i=1}^{m!} p(\pi_i) \log_b p(\pi_i).
 $$
+
 Normalising by $\log_b m!$ yields $H_{\mathrm{PE}} \in [0, 1]$.
 
 - Low PE: highly regular signals (pure tone, clipped sensor, quasi-harmonic tremor).

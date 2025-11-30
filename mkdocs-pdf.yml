@@ -1,0 +1,10 @@
+INHERIT: mkdocs.yml
+
+plugins:
+  - search
+  - pdf-export:
+      verbose: false
+      media_type: print
+      combined: true
+      combined_output_path: site/pdf/permutation-entropy-docs.pdf
+      chromium_executable: /usr/bin/chromium
