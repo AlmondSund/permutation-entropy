@@ -1,0 +1,6 @@
+dataset_path: "data/processed/entropy_features.csv"
+label_column: "label"
+feature_columns: null  # auto-select numeric columns except label
+model_type: "logreg"
+model_path: "experiments/last_run/forecaster.joblib"
+metrics_path: "experiments/last_run/metrics.csv"

@@ -6,7 +6,7 @@ entropy:
   order: 3
   delay: 1
 model:
-  type: logistic_regression
+  type: logreg
   calibration: platt
 paths:
   data_root: data

@@ -1,0 +1,14 @@
+data_glob: "data/raw/*.npy"
+sampling_rate_hz: 100
+window_seconds: 10
+step_seconds: 5
+order: 4
+delay: 1
+scales: 3
+detrend: true
+zscore: true
+output_path: "data/processed/entropy_features.csv"
+label_mapping:
+  eruption: 1
+  background: 0
+  default: 0
