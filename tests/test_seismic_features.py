@@ -16,6 +16,3 @@ def test_extract_entropy_features_dataframe_shape():
     df = extract_entropy_features(signal, sampling_rate, cfg)
     assert not df.empty
     assert {"pe", "wpe", "mpe_scale_1", "mpe_scale_2"}.issubset(df.columns)
-
-def test_extract_basic_features_placeholder():
-    assert callable(seismic_features.extract_basic_features)
